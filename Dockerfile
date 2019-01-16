@@ -2,9 +2,9 @@ FROM mrodler/php:7.3-fpm-alpine
 
 LABEL maintainer="Markus Rodler"
 
-RUN apk --update --no-cache add autoconf g++ make && \
-    pecl install -f xdebug-beta && \
-    docker-php-ext-enable xdebug && \
-    apk del --purge autoconf g++ make
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_NO_INTERACTION 1
+RUN curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/bin/ --filename=composer
 
 EXPOSE 9000

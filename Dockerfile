@@ -6,6 +6,6 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_NO_INTERACTION 1
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
-RUN apk --no-cache add --virtual .composer-rundeps git openssh tini bash patch make zip unzip
+RUN apk --no-cache add .composer-rundeps git openssh tini bash patch make zip unzip
 
 EXPOSE 9000
